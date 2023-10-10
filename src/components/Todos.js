@@ -46,7 +46,7 @@ const Todos = (props) => {
                     value={todo}
                 />
 
-                <button type="submit"  >Thêm</button>
+                <button type="submit" className="addTodoSubmit">Add</button>
             </form>
         </div>
     );

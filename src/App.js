@@ -6,7 +6,7 @@ function App() {
   return (
     <div className="App">
       <h1>
-        Todo App
+        TodoList App
       </h1>
       <div>
         <Todos />

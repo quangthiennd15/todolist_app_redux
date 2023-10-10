@@ -25,23 +25,27 @@ const mapDispatchToProps = (dispatch) => {
 
 const DisplayTodos = (props) => {
     const [sort, setSort] = useState("active");
+
     return (
         <div className="displaytodos">
             <div className="buttons">
                 <button
+                    className={sort === "active" ? "selected" : ""}
                     onClick={() => setSort("active")}
                 >
-                    Chưa hoàn thành
+                    To do
                 </button>
                 <button
+                    className={sort === "completed" ? "selected" : ""}
                     onClick={() => setSort("completed")}
                 >
-                    Đã hoàn thành
+                    Completed
                 </button>
                 <button
+                    className={sort === "all" ? "selected" : ""}
                     onClick={() => setSort("all")}
                 >
-                    Tất cả
+                    All
                 </button>
             </div>
             <ul>
@@ -60,7 +64,7 @@ const DisplayTodos = (props) => {
                         );
                     })
                     : null}
-                {/* for completed items */}
+
                 {props.todos.length > 0 && sort === "completed"
                     ? props.todos.map((item) => {
                         return (
