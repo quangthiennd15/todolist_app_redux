@@ -100,8 +100,8 @@ body {
   display: flex;
   align-self: flex-start;
   flex-wrap: wrap;
-  margin-left: 5%;
-  max-height: 100vh;
+  padding-left: 10%;
+  max-height: 60vh;
   overflow-y: auto;
   width: 100%;
 }
