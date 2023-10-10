@@ -101,7 +101,7 @@ body {
   align-self: flex-start;
   flex-wrap: wrap;
   padding-left: 10%;
-  max-height: 60vh;
+  max-height: 50vh;
   overflow-y: auto;
   width: 100%;
 }
