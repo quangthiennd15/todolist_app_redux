@@ -18,6 +18,7 @@ const mapDispatchToProps = (dispatch) => {
 const Todos = (props) => {
     const [todo, setTodo] = useState("");
 
+
     const handleChange = (e) => {
         setTodo(e.target.value);
     };
@@ -28,13 +29,14 @@ const Todos = (props) => {
             alert("Input is Empty");
         } else {
             await props.addTodo({
-                id: Math.floor(Math.random() * 1000),
+                id: (Math.floor(Math.random() * 1000)).toString(),
                 item: todo,
                 completed: false,
             });
             setTodo("");
         }
     };
+
     return (
         <div>
             <form onSubmit={(event) => add(event)} className="addTodos">

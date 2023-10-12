@@ -13,9 +13,9 @@ html {
 
 body {
   background: linear-gradient(
-    190deg,
-    rgb(174, 241, 230) 0%,
-    rgb(106, 90, 171) 100%
+    180deg,
+    rgb(219 250 245) 0%,
+    rgb(15 120 255) 100%
   );
   background-repeat: no-repeat;
   background-size: cover;
@@ -97,7 +97,6 @@ body {
 
 .displaytodos ul {
   list-style: none;
-  display: flex;
   align-self: flex-start;
   flex-wrap: wrap;
   padding-left: 10%;

@@ -7,6 +7,7 @@ const TodoItem = (props) => {
 
     const inputRef = useRef(true);
 
+
     const changeFocus = () => {
         inputRef.current.disabled = false;
         inputRef.current.focus();
@@ -22,6 +23,7 @@ const TodoItem = (props) => {
         <li
             key={item.id}
             className="card"
+        // draggable
         >
             <textarea
                 ref={inputRef}
