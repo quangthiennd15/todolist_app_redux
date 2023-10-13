@@ -58,8 +58,16 @@ const DisplayTodos = (props) => {
 
     const [dragDropList, setDragDropList] = useState([]);
     useEffect(() => {
-        setDragDropList(props.todos);
-    }, [props.todos]);
+        // Lọc danh sách todos dựa trên giá trị mới của sort
+        const filteredTodos = props.todos.filter(item => {
+            if (sort === "active") return !item.completed;
+            if (sort === "completed") return item.completed;
+            return true;
+        });
+
+        // Cập nhật dragDropList với danh sách đã lọc
+        setDragDropList(filteredTodos);
+    }, [props.todos, sort]);
 
     const onDragEnd = (result) => {
         if (!result.destination) {
@@ -72,16 +80,16 @@ const DisplayTodos = (props) => {
         const sourceItem = dragDropList[sourceIndex];
         const destinationItem = dragDropList[destinationIndex];
 
-        if (sourceItem.sort === destinationItem.sort) {
-            const reorderedItems = reorder(
-                dragDropList,
-                sourceIndex,
-                destinationIndex
-            );
+        // if (sourceItem.sort === destinationItem.sort) {
+        const reorderedItems = reorder(
+            dragDropList,
+            sourceIndex,
+            destinationIndex
+        );
 
-            console.log({ reorderedItems });
-            setDragDropList(reorderedItems);
-        }
+        console.log({ reorderedItems });
+        setDragDropList(reorderedItems);
+        // }
     };
 
     return (
