@@ -60,21 +60,29 @@ const DisplayTodos = (props) => {
     useEffect(() => {
         setDragDropList(props.todos);
     }, [props.todos]);
+
     const onDragEnd = (result) => {
         if (!result.destination) {
             return;
         }
 
-        const reorderedItems = reorder(
-            dragDropList,
-            result.source.index,
-            result.destination.index
-        );
+        const sourceIndex = result.source.index;
+        const destinationIndex = result.destination.index;
 
-        console.log({ reorderedItems });
-        setDragDropList(reorderedItems);
+        const sourceItem = dragDropList[sourceIndex];
+        const destinationItem = dragDropList[destinationIndex];
+
+        if (sourceItem.sort === destinationItem.sort) {
+            const reorderedItems = reorder(
+                dragDropList,
+                sourceIndex,
+                destinationIndex
+            );
+
+            console.log({ reorderedItems });
+            setDragDropList(reorderedItems);
+        }
     };
-
 
     return (
         <div className="displaytodos">
@@ -133,8 +141,6 @@ const DisplayTodos = (props) => {
 
                                                         />
 
-
-                                                        {/* </ul> */}
                                                     </div>
                                                 )}
                                             </Draggable>
