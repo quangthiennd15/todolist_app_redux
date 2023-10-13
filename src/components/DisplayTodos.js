@@ -33,40 +33,24 @@ const reorder = (list, startIndex, endIndex) => {
 
 const DisplayTodos = (props) => {
     const [sort, setSort] = useState("active");
-    // const [dragDropList, setDragDropList] = useState([]);
-    // // useEffect(() => {
-    // //     console.log(dragDropList);
-    // // }, [dragDropList]);
-
-    // const onDragComplete = (result) => {
-    //     console.log(props.todos);
-    //     if (!result.destination) return;
-
-    //     const arr = [...props.todos];
-
-    //     // Sử dụng result.source.index và result.destination.index để di chuyển phần tử
-    //     let [removedItem] = arr.splice(result.source.index, 1);
-    //     arr.splice(result.destination.index, 0, removedItem);
-
-    //     // Cập nhật lại dragDropList sau khi kéo và thả
-    //     setDragDropList(arr);
-    //     console.log(dragDropList);
-
-
-    // };
-
 
     const [dragDropList, setDragDropList] = useState([]);
+
+
     useEffect(() => {
-        // Lọc danh sách todos dựa trên giá trị mới của sort
+        // console.log({ props });
+        // if (!props.todos.length) return;
         const filteredTodos = props.todos.filter(item => {
             if (sort === "active") return !item.completed;
             if (sort === "completed") return item.completed;
             return true;
         });
 
-        // Cập nhật dragDropList với danh sách đã lọc
+
         setDragDropList(filteredTodos);
+        localStorage.setItem("todos", JSON.stringify(props.todos));
+        console.log(JSON.parse(localStorage.getItem("todos")));
+
     }, [props.todos, sort]);
 
     const onDragEnd = (result) => {
@@ -80,9 +64,7 @@ const DisplayTodos = (props) => {
             result.destination.index
         );
 
-        console.log({ reorderedItems });
         setDragDropList(reorderedItems);
-        // }
     };
 
     return (

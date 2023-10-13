@@ -1,6 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
-
-const initialState = [];
+const initialData = JSON.parse(localStorage.getItem("todos"))
+const initialState = initialData || [];
 
 const addTodoReducer = createSlice({
     name: "todos",
@@ -9,6 +9,7 @@ const addTodoReducer = createSlice({
         //Adding todos
         addTodos: (state, action) => {
             state.push(action.payload);
+            // localStorage.setItem("todos", JSON.stringify([...state, action.payload]))
             return state;
         },
         //remove todos
