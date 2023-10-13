@@ -74,17 +74,10 @@ const DisplayTodos = (props) => {
             return;
         }
 
-        const sourceIndex = result.source.index;
-        const destinationIndex = result.destination.index;
-
-        const sourceItem = dragDropList[sourceIndex];
-        const destinationItem = dragDropList[destinationIndex];
-
-        // if (sourceItem.sort === destinationItem.sort) {
         const reorderedItems = reorder(
             dragDropList,
-            sourceIndex,
-            destinationIndex
+            result.source.index,
+            result.destination.index
         );
 
         console.log({ reorderedItems });
